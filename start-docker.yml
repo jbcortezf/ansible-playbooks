@@ -1,0 +1,10 @@
+- hosts: webservers
+  tasks:
+    - name: Start httpd container
+      docker_container:
+        name: httpd
+        state: started
+        ports:
+          - "8080:80"
+        volumes:
+          - /www/:/usr/local/apache2/htdocs/

@@ -1,0 +1,6 @@
+- hosts: webservers
+  tasks:
+    - name: Stop httpd container
+      docker_container:
+        name: httpd
+        state: stopped

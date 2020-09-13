@@ -1,0 +1,6 @@
+- hosts: webservers
+  tasks:
+    - name: Install python3-docker
+      yum:
+        name: python36-docker
+        state: present

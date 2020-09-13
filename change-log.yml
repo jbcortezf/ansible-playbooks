@@ -1,0 +1,20 @@
+- hosts: webservers
+  tasks:
+    - name: Create a directory if it does not exist
+      file:
+        path: /wwwlog
+        state: directory
+        mode: '0755'
+    - name: Stop httpd container
+      docker_container:
+        name: httpd
+        state: stopped
+    - name: Start httpd container
+      docker_container:
+        name: httpd
+        state: started
+        ports:
+          - "8080:80"
+        volumes:
+          - /www/:/usr/local/apache2/htdocs/
+          - /wwwlogs/:/usr/local/apache2/logs/
